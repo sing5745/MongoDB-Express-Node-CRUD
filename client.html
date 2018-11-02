@@ -1,0 +1,33 @@
+<html>
+   <head>
+      <title>Client Example</title>
+	  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+   </head>
+
+   <body>
+      <div id="list"></h3>
+     
+	  <button onclick="getUsers()">Get All Users</button>  
+	  <a href="AddUser.html">Add User</a>
+      <script>
+	     
+		 //$("#getUsers").click(getUsers());
+	     function getUsers(){
+			 $.getJSON("http://localhost:8081/listUsers",function(data){
+				 console.log(data);
+				 for(i in data){
+						
+						var x = data[i];
+						
+
+						$("#list").append(x.name + '<br>');
+					}
+
+			 });
+		 }
+	  </script>
+   </body>
+</html>

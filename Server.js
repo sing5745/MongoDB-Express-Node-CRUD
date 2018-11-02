@@ -15,9 +15,7 @@ app.use(function(req, res, next) {
 });
 
 app.get('/listUsers', function (req, resp) {
-   //fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
-	  //res.writeHead(200, {'Content-Type': 'text/event-stream'});
-	  //var str = usersA.toString();
+   
   MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   var dbo = db.db("usersdb");
@@ -38,19 +36,16 @@ app.get('/listUsers', function (req, resp) {
   db.close();
 });
 
-
-
       
 })
 
 app.post('/addUser',urlencodedParser, function (req, resp) {
 	
-	//var response;
 	 response = {
       first_name:req.body.first_name,
       last_name:req.body.last_name
    };
-   // First read existing users.
+   
   MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   var dbo = db.db("usersdb");
