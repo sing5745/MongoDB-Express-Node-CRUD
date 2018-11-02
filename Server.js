@@ -1,12 +1,10 @@
 var express = require('express');
 var app = express();
 var fs = require("fs");
-var usersA = require('./MongoGetAll.js');
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var MongoClient = require('mongodb').MongoClient;
-//Create a database named "mydb":
-var url = "mongodb://root:mongo123@ds127129.mlab.com:27129/usersdb";
+var url = "mongodb://root:mongo123@ds1234.mlab.com:1234/usersdb";
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -54,7 +52,7 @@ app.post('/addUser',urlencodedParser, function (req, resp) {
   
   collectionU.insertOne(response,function(err, res) {
     if (err) throw err;
-    //console.log('From Mongo' + JSON.stringify(res));
+    
 	console.log("Added");
 	 resp.end(JSON.stringify(response) + 'Successfullt Added');
   });
